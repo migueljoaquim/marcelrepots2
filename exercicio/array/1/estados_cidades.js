@@ -22493,3 +22493,53 @@ var estadosCidades = {
         }
     ]
 };
+
+
+
+function getListaDeEstados(){
+
+   let  array = []
+
+   estadosCidades.estados.forEach(function(estados){
+      array.push(estados.sigla)
+   })
+
+
+
+   let json = {
+      uf : array, quantidade: estadosCidades.estados.length
+   }
+
+   
+   return json
+
+   
+}
+
+
+
+//console.log(getListaDeEstados())
+
+function getDadosEstado(siglas){
+
+  
+   
+   let json = {
+   }
+
+
+   estadosCidades.estados.forEach(function(estados){
+    
+
+      if(siglas == estados.sigla){
+
+         json = {uf : estados.sigla, descricao : estados.nome, capital:estados.capital, regiao: estados.regiao}
+
+      }
+   })
+
+   return json
+
+}
+
+console.log(getDadosEstado('SP'))
