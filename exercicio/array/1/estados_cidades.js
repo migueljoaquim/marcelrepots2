@@ -2688,7 +2688,7 @@ var estadosCidades = {
              ]
         },
         {
-            sigla : 'RJ',
+            sigla : 'RJ', 
             nome  : 'Rio de Janeiro',
             capital: 'Rio de Janeiro',
             capital_pais: { capital: false, 
@@ -22506,9 +22506,9 @@ function getListaDeEstados(){
 
 
 
-   let json = {
-      uf : array, quantidade: estadosCidades.estados.length
-   }
+      let json = {
+         uf : array, quantidade: estadosCidades.estados.length
+      }
 
    
    return json
@@ -22542,4 +22542,93 @@ function getDadosEstado(siglas){
 
 }
 
-console.log(getDadosEstado('SP'))
+// console.log(getDadosEstado('SP'))
+
+function getCapitalEstado(siglas){
+   let json = {
+   }
+
+
+   estadosCidades.estados.forEach(function(estados){
+    
+
+      if(siglas == estados.sigla){
+
+         json = {uf : estados.sigla, descricao : estados.nome, capital:estados.capital}
+
+      }
+   })
+
+   return json
+}
+//console.log(getCapitalEstado('SP'))
+//block
+function getEstadosRegiao(regiao){
+   let estadosArray = []
+   let json = {
+   }
+  
+
+      estadosCidades.estados.forEach(function(estados){
+    
+
+         if(regiao == estados.regiao){
+   
+            json = {uf : estados.sigla, descricao : estados.nome}
+            estadosArray.push(json)
+         }
+      })
+   
+ 
+
+   return estadosArray
+}
+
+
+//console.log(getEstadosRegiao('Sul'))
+
+function getCapitalPais(){
+   let array = []
+   let json = {
+   }
+   estadosCidades.estados.forEach(function(estados){
+    
+
+      if(estados.capital_pais != undefined){
+
+         json = {capital_atual :estados.capital_pais.capital,uf : estados.sigla, descricao : estados.nome, capital : estados.capital, regiao : estados.regiao, capital_pais_ano_inicio : estados.capital_pais.ano_inicio, capital_pais_ano_termino : estados.capital_pais.ano_fim}
+         array.push(json)
+      }
+   })
+   let json2 = {capitais : array}
+
+
+   return json2
+}
+
+//console.log(getCapitalPais())
+
+function getCidades(sigla){
+   let array = []
+   let json = {}
+
+   
+   estadosCidades.estados.forEach(function(estados){
+     
+
+      if(sigla == estados.sigla){
+
+         estados.cidades.forEach(function(cidade){
+
+            array.push(cidade.nome)
+         
+         })
+
+
+         json = {uf : estados.sigla, descricao : estados.nome,  quantidade_cidades : estados.cidades.length, cidades:array}
+
+      }
+   })
+return json
+}
+console.log(getCidades('AC'))
