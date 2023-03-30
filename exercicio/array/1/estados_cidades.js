@@ -22522,8 +22522,6 @@ function getListaDeEstados(){
 
 function getDadosEstado(siglas){
 
-  
-   
    let json = {
    }
 
