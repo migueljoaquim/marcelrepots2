@@ -11,5 +11,6 @@ var cursos = [
         "icone" :   "https://img.icons8.com/ultraviolet/344/thin-client.png",
         "carga" :   "1200"
     }
+    
 ];
 module.exports ={cursos}
