@@ -1,6 +1,7 @@
 var cursosJson = require('./cursos.js')
 var alunosJson = require('./alunos.js')
 
+
 function getCursos() {
 
 
@@ -102,6 +103,8 @@ function getCursoDados(sigla) {
         if (sigla == aluno.curso[0].sigla) {
             array.push(aluno)
             status = true
+
+
         }
         // console.log(aluno.curso[0].nome);
         // })
@@ -118,8 +121,7 @@ function getCursoDados(sigla) {
 
 }
 
-//console.log(getCursoDados('DDS'));
-
+//console.log(getCursoDados('DS'));
 
 
 
@@ -127,26 +129,33 @@ function getCursoDados(sigla) {
 
 function getSpecificDados(matricula) {
 
-    let json = {
-    }
-    let dadosJ = {}
-
-    let array = []
+    let json = {}
+    let array =[]
 
     alunosJson.alunos.forEach(function (dadosFillter) {
+        dadosFillter.curso.forEach(function (curso) {
 
-        if (matricula == dadosFillter.matricula) {
+            if (matricula == dadosFillter.matricula) {
+                 json = {
+                    nome: dadosFillter.nome,
+                    foto: dadosFillter.foto,
+                    diciplina: curso.disciplinas}
+            }
+            array.push( json )
 
-            json = { foto: dadosFillter.foto, nome: dadosFillter.nome, }
-            array.push(json)
-        }
+        })
 
     })
-    dadosJ.dados = array
-    return dadosJ
+    return json
 
 }
-//console.log(getSpecificDados('20151001014'))
+//console.log(getSpecificDados("20151001016"))
+
+
+
+
+
+
 
 
 
@@ -156,19 +165,25 @@ function getSpecific(status) {
 
     let SpecificJ = {}
 
+    let json = {}
+
     let array = []
 
     alunosJson.alunos.forEach(function (Specific) {
 
-        if (status == Specific.status)
+        if (status == Specific.status) {
 
-        SpecificJ = {nome : Specific.nome,
-            status : Specific.status}
+            json = {
+                nome: Specific.nome,
+                status: Specific.status
+            }
 
-            array.push(SpecificJ)
+            array.push(json)
+        }
+
     })
     SpecificJ.dados = array
-    return SpecificJ
 
+    return SpecificJ
 }
-console.log(getSpecific('Finalizado'))
+//console.log(getSpecific('Finalizado'))
