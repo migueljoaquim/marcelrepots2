@@ -1,0 +1,107 @@
+main {
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+    grid-template-areas: 'left img  right';
+    align-items: center;
+    padding: 96px;
+}
+
+.escolha {
+    display: grid;
+    font-size: 3rem;
+    gap: 45px;
+    font-weight: 300;
+}
+
+.escolha span {
+    color: var(--desktop-color);
+    font-weight: 700;
+
+}
+
+.devices {
+    height: 262px;
+    width: 436px;
+}
+
+.container-left {
+    display: grid;
+    grid-area: left;
+}
+.container-right {
+    grid-area: right;
+    display: flex;
+}
+.img {
+    display: grid;
+    grid-area: img;
+}
+
+.boxs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+.icone {
+    height: 65px;
+    width: 75px;
+}
+
+.curso{
+    display: flex;
+    height: 220px;
+    width: 300px;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    background-color: var(--desktop-color);
+    color: #ffff;
+    font-weight: 500;
+    gap: 24px;
+    border: 1px solid rgba(0, 0, 0, 1);
+    box-shadow: 12px 12px 4px 0px rgba(51, 71, 176, 0.5);
+    transition: all 400ms ease-in-out;
+    cursor: pointer;
+}
+.curso:hover {
+    transform: scale(1.1);
+}
+@media (max-width:640px) {
+    main {
+        padding: 0;
+        padding-top: 35px;
+        padding-bottom: 90px;
+        display: flex;
+        flex-direction: column;
+        gap: 45px;
+    }
+   
+    .curso {
+        height: 175px;
+        width: 175px;
+        font-size: 2rem;
+        gap: 12px;
+    }
+    .curso i{
+       display: none;
+    }
+    .icone {
+        width: 50px;
+        height: 50px;
+    }
+    .escolha{
+        font-size: 2.2rem;
+        text-align: center;
+    }
+    .sair p {
+        display: none;
+    }
+    .devices{
+        display: none;
+    }
+    .professora img {
+        height: 320px;
+    }
+   
+}
